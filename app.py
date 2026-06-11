@@ -168,12 +168,14 @@ def student_dashboard():
     user = User.query.get(session['user_id'])
     return render_template('student_dashboard.html', user=user)
 
+
 # Timetable Routes (from timetable code)
 def get_excel_filename(class_name):
     if class_name:
         return f"{class_name}_timetable.xlsx"
     return "timetable.xlsx" 
-    
+
+
 @app.route('/timetable')
 def timetable_page():
     if 'user_id' not in session or session['role'] != 'teacher':
